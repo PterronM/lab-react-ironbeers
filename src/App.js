@@ -11,8 +11,10 @@ import DetailsBeer from './pages/DetailsBeer';
 import RandomBeer from './pages/RandomBeer';
 import CreateBeer from './pages/CreateBeer';
 
+
 function App() {
-  return (
+
+      return (
     <div className="App">
 
 
@@ -21,7 +23,7 @@ function App() {
 
         <Route path='/' element={<Home/>}/>
         <Route path='/beers' element={<ListBeer/>}/>
-        <Route path='/:id' element={<DetailsBeer/>}/>
+        <Route path='/:idBeer' element={<DetailsBeer/>}/>
         <Route path='/random' element={<RandomBeer/>}/>
         <Route path='/new-beer' element={<CreateBeer/>}/>
 

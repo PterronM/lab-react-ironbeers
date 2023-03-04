@@ -6,7 +6,10 @@ import Nav from "../components/Nav";
 import Card from "react-bootstrap/Card";
 import SearchForm from "../components/SearchForm"
 
-function ListBeer() {
+
+function ListBeer(props) {
+  // console.log( props.allBeer)
+
   const [allBeer, setAllBeer] = useState(null);
   const [isFetching, setIsFetching] = useState(true);
 
@@ -19,28 +22,31 @@ function ListBeer() {
       const response = await axios.get(
         "https://ih-beers-api2.herokuapp.com/beers"
       );
-      console.log(response.data);
+      // console.log(response.data);
       setAllBeer(response.data);
       setIsFetching(false);
     } catch (error) {
       console.log(error);
     }
-  };
+  };  
 
   if (isFetching === true) {
     return <Spinner animation="border" />;
   }
 
   return (
-    <div >
+    <div>
       <Nav />
       <SearchForm/>
+      <div style={{display:"flex",  justifyContent:"space-evenly", flexWrap:"wrap", alignItems:"center" }}>
       {allBeer.map((eachBeer) => {
+        
         return (
-          <div key={eachBeer._id} className="mt-3" style={{display:"flex", flexDirection:"column",flexWrap:"wrap", justifyContent:"space-evenly", alignItems:"center" }}>
-            <Link className="Links" to="" >
+          <div key={eachBeer._id} className="mt-3">
+            
+            <Link className="Links" to={`/${eachBeer._id}`}>
               <Card style={{ width: '15rem'}}>
-                <Card.Body>
+                <Card.Body >
                   <Card.Img
                     style={{ width: "2rem", height: "6rem" }}
                     src={eachBeer.image_url}
@@ -55,6 +61,7 @@ function ListBeer() {
          </div>
         );
       })}
+      </div>
     </div>
   );
 }
