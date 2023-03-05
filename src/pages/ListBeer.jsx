@@ -11,6 +11,7 @@ function ListBeer(props) {
   // console.log( props.allBeer)
 
   const [allBeer, setAllBeer] = useState(null);
+  // const [beerDisplay, setBeerDisplay] = useState(null);
   const [isFetching, setIsFetching] = useState(true);
 
   useEffect(() => {
@@ -29,6 +30,7 @@ function ListBeer(props) {
       console.log(error);
     }
   };  
+
 
   if (isFetching === true) {
     return <Spinner animation="border" />;

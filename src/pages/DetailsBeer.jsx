@@ -28,18 +28,26 @@ function DetailsBeer(props) {
   return (
     <div>
     <Nav />
-    <div style={{display:"flex", flexDirection:"column", justifyContent:"space-evenly", flexWrap:"wrap", alignItems:"center" }}>
+    <div  className="mt-5" style={{display:"flex", flexDirection:"column", justifyContent:"space-evenly", flexWrap:"wrap", alignItems:"center" }}>
       {beerDetails === null
       ? <Spinner animation="border" />
-      :<Card style={{ width: '15rem'}}>
-      <Card.Body>
-        <Card.Img src={beerDetails.image_url} alt="beer" style={{ width: "3rem", height: "11rem" }} />
-        <Card.Title>{beerDetails.name}</Card.Title>
-        <Card.Text>{beerDetails.tagline}</Card.Text>
-        <Card.Text>{beerDetails.description}</Card.Text>
-        <p>{beerDetails.contributed_by}</p>
-        <p>{beerDetails.attenuation_level}</p>
-        <p>{beerDetails.first_brewed}</p>
+      :<Card style={{ width: '30rem'}}>
+      <Card.Body style={{display:"flex", flexDirection:"column" ,alignItems:"center"}}>
+        <Card.Img  src={beerDetails.image_url} alt="beer" style={{width: "3rem", height: "12rem" }} />
+         <div className="d-flex mt-5 mb-2 w-100 justify-content-between">
+         <div className="d-flex flex-column align-items-start">
+          <Card.Title>{beerDetails.name}</Card.Title>
+          <Card.Text>{beerDetails.tagline}</Card.Text>
+         </div>
+          <div>
+            <p>{beerDetails.attenuation_level}</p>
+            <p>{beerDetails.first_brewed}</p>
+          </div>
+         </div>
+        <div className="d-flex flex-column align-items-start">
+          <Card.Text style={{textAlign:"justify"}}>{beerDetails.description}</Card.Text>
+          <p>{beerDetails.contributed_by}</p>
+        </div>
         </Card.Body>
       </Card>      
       }
