@@ -31,7 +31,7 @@ function DetailsBeer(props) {
     <div  className="mt-5" style={{display:"flex", flexDirection:"column", justifyContent:"space-evenly", flexWrap:"wrap", alignItems:"center" }}>
       {beerDetails === null
       ? <Spinner animation="border" />
-      :<Card style={{ width: '30rem'}}>
+      :<Card style={{ width: '20rem'}}>
       <Card.Body style={{display:"flex", flexDirection:"column" ,alignItems:"center"}}>
         <Card.Img  src={beerDetails.image_url} alt="beer" style={{width: "3rem", height: "12rem" }} />
          <div className="d-flex mt-5 mb-2 w-100 justify-content-between">
