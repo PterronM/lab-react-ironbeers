@@ -3,11 +3,12 @@ import Form from 'react-bootstrap/Form';
 
 
 function SearchForm(props) {
+  // console.log(props)
   const [search, setSearch] = useState("");
 
   const handleSearch = (event) => {
     setSearch(event.target.value);
-    props.filterFood(event.target.value);
+    props.filterBeer(event.target.value);
   };
 
   return (

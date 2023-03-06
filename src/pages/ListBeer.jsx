@@ -11,7 +11,7 @@ function ListBeer(props) {
   // console.log( props.allBeer)
 
   const [allBeer, setAllBeer] = useState(null);
-  // const [beerDisplay, setBeerDisplay] = useState(null);
+  const [beerDisplay, setBeerDisplay] = useState();
   const [isFetching, setIsFetching] = useState(true);
 
   useEffect(() => {
@@ -25,11 +25,26 @@ function ListBeer(props) {
       );
       // console.log(response.data);
       setAllBeer(response.data);
+      setBeerDisplay(response.data)
       setIsFetching(false);
     } catch (error) {
       console.log(error);
     }
   };  
+
+  const filterBeer = (search) => {
+    const newArrBeer = allBeer.filter((eachBeer) => {
+        let nameMay = eachBeer.name.toUpperCase()
+        let searchMay = search.toUpperCase()
+      if (nameMay.includes(searchMay)) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+
+    setBeerDisplay(newArrBeer);
+  }; 
 
 
   if (isFetching === true) {
@@ -39,9 +54,10 @@ function ListBeer(props) {
   return (
     <div>
       <Nav />
-      <SearchForm/>
+      {/* <SearchForm  /> */}
+      <SearchForm filterBeer= {filterBeer} />
       <div style={{display:"flex",  justifyContent:"space-evenly", flexWrap:"wrap", alignItems:"center" }}>
-      {allBeer.map((eachBeer) => {
+      {beerDisplay.map((eachBeer) => {
         
         return (
           <div key={eachBeer._id} className="mt-3">
